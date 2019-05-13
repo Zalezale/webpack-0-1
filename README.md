@@ -1,1 +1,1 @@
-study webpack
+# 若不配置，webpack4 默认会将与package.json同级的src文件下的index.js文件打包到同级的dist文件下
