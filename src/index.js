@@ -1,3 +1,5 @@
+import './style.less'
+
 function component() {
     let element = document.createElement('div');
 
