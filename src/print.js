@@ -1,3 +1,3 @@
 export default function add() {
-    console.log('add')
+    console.log(a)
 }
