@@ -1,3 +1,3 @@
 export default function add() {
-    let a = 1
+    console.log('print', 5)
 }

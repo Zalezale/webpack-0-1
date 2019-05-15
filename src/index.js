@@ -10,3 +10,8 @@ function component() {
 }
 
 document.body.appendChild(component());
+if (module.hot) {
+    module.hot.accept('./print.js', function () {
+        window.location.reload()
+    })
+}

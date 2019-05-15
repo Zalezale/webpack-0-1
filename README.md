@@ -10,4 +10,6 @@
 #生产环境：source-map可以看到错误模块源码，nosources-source-map看不到错误模块源码，但两者的可以正确展示错误代码的行号  
 #测试环境：没看出来啥区别都是vm+模块名  eval-source-map是官网推荐的方式  cheap-eval-source-map与eval-source-map打包之后sourcemap是一样的，但是前者构建速度快且只限行
 #选定工具：
-#使用 webpack-dev-middleware，以便根据需求添加更多自定义的配置
+#使用 webpack-dev-middleware，以便根据需求添加更多自定义的配置  
+五、模块热替换
+#官网例子是基于webpack-dev-server，当前例子是基于webpack-dev-middleware，实时刷新的方式对js进行替换
