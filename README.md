@@ -5,3 +5,9 @@
 #提取css，图片压缩，转换成base64，加载ttf、excel、json等文件  
 三、管理输出  
 #将入口文件直接打包到新生成的html中，并清理原来的dist文件夹中的文件  
+四、开发环境  
+#sourcemap  
+#生产环境：source-map可以看到错误模块源码，nosources-source-map看不到错误模块源码，但两者的可以正确展示错误代码的行号  
+#测试环境：没看出来啥区别都是vm+模块名  eval-source-map是官网推荐的方式  cheap-eval-source-map与eval-source-map打包之后sourcemap是一样的，但是前者构建速度快且只限行
+#选定工具：
+#使用 webpack-dev-middleware，以便根据需求添加更多自定义的配置
