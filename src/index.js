@@ -1,15 +1,18 @@
 import './style.less'
 import add from './print'
-function component() {
+function component(a) {
     let element = document.createElement('div');
-    add()
-    // lodash（目前通过一个 script 引入）对于执行这一行是必需的
-    element.innerHTML = '大爬虫';
-
+    element.innerHTML = '大爬虫' + add();
     return element;
 }
 
-document.body.appendChild(component());
+if (process.env.NODE_ENV !== 'production') {
+    document.body.appendChild(component(1));
+} else {
+    document.body.appendChild(component(2));
+}
+
+//用于监控文件是否变化来实时更新
 if (module.hot) {
     module.hot.accept('./print.js', function () {
         window.location.reload()

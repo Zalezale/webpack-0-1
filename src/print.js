@@ -1,3 +1,5 @@
+
+import { a, b } from './math'
 export default function add() {
-    console.log('print', 5)
+    return b + '打印'
 }

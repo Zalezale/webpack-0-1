@@ -13,3 +13,7 @@
 #使用 webpack-dev-middleware，以便根据需求添加更多自定义的配置  
 五、模块热替换
 #官网例子是基于webpack-dev-server，当前例子是基于webpack-dev-middleware，实时刷新的方式对js进行替换
+六、tree shaking（通过中文常量来鉴别是否存在未使用的也被打包的现象）
+#使用 ES2015 模块语法（即 import 和 export）
+#在项目 package.json 文件中，添加一个 "sideEffects" 属性。（经过验证这项存并无存在意义）
+#通过将 mode 选项设置为 production，启用 minification(代码压缩) 和 tree shakin

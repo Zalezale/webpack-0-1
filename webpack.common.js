@@ -1,24 +1,20 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    mode: 'development',
     entry: {
-        app: ['./src/index.js', 'webpack-hot-middleware/client'],
-        print: ['./src/print.js', 'webpack-hot-middleware/client']
+        app: './src/index.js'
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: '管理输出'
-        }),
-        new webpack.HotModuleReplacementPlugin(),
+            title: 'Production'
+        })
     ],
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        path: path.resolve(__dirname, 'dist')
     },
     module: {
         rules: [
