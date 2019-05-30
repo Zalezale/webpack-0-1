@@ -1,7 +1,7 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const webpack = require('webpack')
 module.exports = {
     entry: {
         app: './src/index.js'
@@ -10,17 +10,24 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'Production'
-        })
+        }),
+        new webpack.HashedModuleIdsPlugin()
     ],
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
-        chunkFilename: '[name][hash].js'
+        chunkFilename: '[name].[chunkhash].js'
     },
     optimization: {
         splitChunks: {
-            chunks: 'all'
-        }
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            },
+        },
     },
     module: {
         rules: [

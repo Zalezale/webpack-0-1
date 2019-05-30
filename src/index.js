@@ -1,13 +1,16 @@
 import './style.less'
-import common from './common'
-import common1 from './common1'
+
 import add from './print'
 import _ from 'lodash'
+// import jq from 'jquery'
 function component(a) {
     let element = document.createElement('div');
     element.innerHTML = '大爬虫' + a + add().text;
     setTimeout(() => {
         element.innerHTML = '大爬虫' + a + add().text + _.join('111', '222')
+        // jq('div').each(item => {
+        //     console.log(item)
+        // })
     }, 3000);
     return element;
 }

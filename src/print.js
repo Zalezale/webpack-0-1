@@ -7,10 +7,10 @@ let c = { text: '' }
 import(/* webpackChunkName: "math" */ './math').then((e) => {
     b = e.b
     b.then(item => {
-        c.text += item 
+        c.text += item
         console.log(c)
     })
 }).catch(error => 'An error occurred while loading the component');
 export default function add() {
-    return c
+    return c + 1
 }
