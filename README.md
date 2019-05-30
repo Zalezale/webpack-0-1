@@ -17,3 +17,11 @@
 #使用 ES2015 模块语法（即 import 和 export）
 #在项目 package.json 文件中，添加一个 "sideEffects" 属性。（经过验证这项存并无存在意义）
 #通过将 mode 选项设置为 production，启用 minification(代码压缩) 和 tree shakin
+七、生产环境
+#process.env.NODE_ENV在src目录下有效
+#分离生产与测试的webpack-config配置
+八、代码分离
+#防止重复可以有效地将重复的代码抽离出来形成一个公共的js文件，会优先加载这个公共的模块
+#动态引入
+#预取预存
+#budle分析
