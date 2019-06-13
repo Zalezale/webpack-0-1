@@ -1,24 +1,33 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack')
 module.exports = {
-    mode: 'development',
     entry: {
-        app: ['./src/index.js', 'webpack-hot-middleware/client'],
-        print: ['./src/print.js', 'webpack-hot-middleware/client']
+        app: './src/index.js'
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: '管理输出'
+            title: 'Production'
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.HashedModuleIdsPlugin()
     ],
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        chunkFilename: '[name].[chunkhash].js'
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            },
+        },
     },
     module: {
         rules: [
