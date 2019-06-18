@@ -1,65 +1,19 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack')
-module.exports = {
-    mode: 'development',
-    entry: {
-        app: ['./src/index.js', 'webpack-hot-middleware/client'],
-        print: ['./src/print.js', 'webpack-hot-middleware/client']
-    },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            title: '管理输出'
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-    ],
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.less$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
-            },
-            {
-                test: /\.(gif|png|jpe?g|svg)$/i,
-                // use: [
-                //     {
-                //         loader: 'url-loader',
-                //         options: {
-                //             limit: 999
-                //         }
-                //     }
-                // ]
-                use: [
-                    'file-loader',
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            disable: false,
-                            mozjpeg: {
-                                enabled: true,
-                                quality: 80
-                            },
-                        }
-                    },
+var path = require('path');
 
-                ],
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    'file-loader'
-                ]
-            }
-        ]
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'webpack-numbers.js',//生成的包文件名称
+        library: 'webpackNumbers',//默认输出的包名
+        libraryTarget: 'var'//输出类型
+    },
+    externals: {
+        lodash: {
+            commonjs: 'lodash',
+            commonjs2: 'lodash',
+            amd: 'lodash',
+            root: '_'
+        }
     }
 };
